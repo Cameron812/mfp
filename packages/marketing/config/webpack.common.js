@@ -1,4 +1,6 @@
 /**@type{import('webpack').Configuration} */
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const config = {
   module: {
     rules: [
@@ -15,5 +17,10 @@ const config = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+  ],
 };
 module.exports = config;

@@ -2,14 +2,12 @@ const { merge } = require('webpack-merge');
 const commonConfig = require('./webpack.common');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const packageJson = require('../package.json');
-const devConfig = {
-  mode: 'development',
-  devtool: 'eval-source-map',
-  devServer: {
-    port: 8081,
-    historyApiFallback: {
-      index: 'index.html',
-    },
+
+const prodConfig = {
+  mode: 'production',
+  output: {
+    filename: '[name].[contenthash].js',
+    publicPath: '/marketing/dist/',
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -23,4 +21,4 @@ const devConfig = {
   ],
 };
 
-module.exports = merge(commonConfig, devConfig);
+module.exports = merge(commonConfig, prodConfig);

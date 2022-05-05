@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 /**@type{import('webpack').Configuration} */
 const config = {
   module: {
@@ -15,5 +17,11 @@ const config = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+    new CleanWebpackPlugin(),
+  ],
 };
 module.exports = config;
